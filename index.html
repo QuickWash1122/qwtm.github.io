@@ -1,0 +1,391 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2113.65">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+    span.s1 {font: 12.0px 'Hiragino Sans'}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="ja"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;<span class="s1">車種サイズ検索</span>&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>body {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #f4f4f9;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #333;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>min-height: 100vh;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>flex-direction: column;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.header-bar {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>height: 60px;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #ffcc00;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>position: sticky;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>top: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>z-index: 100;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>/* <span class="s1">画像を背景として中央に配置する設定</span> */</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-image: url('quickwash_logo_top 2.png');<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-size: contain; /* <span class="s1">バーの高さに合わせて画像を収める</span> */</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-repeat: no-repeat;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-position: center; /* <span class="s1">中央に配置</span> */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* .header-logo<span class="s1">のスタイルは不要になったため削除しました</span> */</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.container {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 95%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>max-width: 600px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin: 20px auto;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: #fff;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>flex-grow: 1;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>h1 {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #cc9900;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 25px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.6em;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>input[type="text"] {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 15px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 2px solid #ffcc00;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-sizing: border-box;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.1em;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>#count-display {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>text-align: left;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #cc9900;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: bold;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.result-item {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: grid;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>grid-template-columns: 2fr 60px 1fr;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>gap: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 12px 15px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 6px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #fff;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.car-info {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: bold;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #444;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>overflow: hidden;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>white-space: nowrap;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>text-overflow: ellipsis;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.result-size {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.2em;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 900;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 4px 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 4px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.size-s { background-color: #e6f7ff; color: #007bff; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.size-m { background-color: #fffbe6; color: #ff9800; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.size-l { background-color: #e6ffe6; color: #4caf50; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.size-ll { background-color: #ffe6e6; color: #f44336; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.size-xl { background-color: #f3e6ff; color: #9c27b0; }</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.price-button {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #ffaa00;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #fff;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: none;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 5px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: bold;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 0.9em;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transition: background-color 0.2s;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>white-space: nowrap;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.price-button:hover {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #cc9900;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.modal {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: none;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>position: fixed;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>z-index: 101;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>left: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>top: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>height: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>overflow: auto;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: rgba(0,0,0,0.6);<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.modal-content {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #fff;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin: 10% auto;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 90%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>max-width: 450px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.modal-content h2 {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #ffaa00;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-bottom: 2px solid #ffcc00;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding-bottom: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-top: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 15px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.close-button {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #aaa;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>float: right;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 28px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: bold;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.close-button:hover,</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.close-button:focus {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #333;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>text-decoration: none;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.price-table div {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>justify-content: space-between;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 8px 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-bottom: 1px dashed #eee;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1em;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.price-table strong {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #333;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.price-table span {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #f44336;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: bold;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.service-group {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-top: 15px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding-top: 5px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-top: 1px solid #ddd;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;div class="header-bar"&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;div class="container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h1&gt;<span class="s1">車種サイズ検索</span>&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;input type="text" id="carNameInput" placeholder="<span class="s1">車種名またはメーカー名を入力してください（例：アルファード、トヨタ）</span>" onkeyup="searchCarSize()"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="count-display"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="result"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="result-placeholder"&gt;<span class="s1">入力された車種・メーカーに該当するサイズと価格が表示されます。</span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;div id="priceModal" class="modal"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="modal-content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;span class="close-button" onclick="closeModal()"&gt;&amp;times;&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h2 id="modalTitle"&gt;&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;&lt;strong&gt;<span class="s1">車種サイズ</span>: &lt;/strong&gt;&lt;span id="modalSize"&gt;&lt;/span&gt;&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="priceTable" class="price-table"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const carDataByMaker = {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">レクサス</span>": {"CT": "M", "ES": "L", "GS": "L", "GX": "XL", "HS": "L", "IS": "M", "LBX": "M", "LC": "L", "LFA": "L", "LM": "XL", "LS": "LL", "LX": "XL", "NX": "L", "RC": "M", "RX": "LL", "RZ": "LL", "SC": "M", "UX": "M"},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">トヨタ</span>": {"<span class="s1">アイシス</span>": "L", "<span class="s1">アクア</span>": "S", "<span class="s1">アベンシス</span>": "M", "<span class="s1">アリオン</span>": "M", "<span class="s1">アリスト</span>": "L", "<span class="s1">アルテッツァ</span>": "M", "<span class="s1">アルファード</span>": "XL", "<span class="s1">アレックス</span>": "M", "<span class="s1">イプサム</span>": "L", "<span class="s1">ウィッシュ</span>": "L", "<span class="s1">ウィンダム</span>": "L", "<span class="s1">エスクァイア</span>": "LL", "<span class="s1">エスティマ</span>": "LL", "<span class="s1">オリジン</span>": "M", "<span class="s1">オーパ</span>": "M", "<span class="s1">オーリス</span>": "M", "<span class="s1">カムリ</span>": "L", "<span class="s1">カリーナ</span>": "M", "<span class="s1">カルディナ</span>": "M", "<span class="s1">カレン</span>": "M", "<span class="s1">カローラ</span>": "M", "<span class="s1">カローラ</span> II": "S", "<span class="s1">カローラ</span> <span class="s1">アクシオ</span>": "M", "<span class="s1">カローラ</span> <span class="s1">クロス</span>": "L", "<span class="s1">カローラ</span> <span class="s1">スパシオ</span>": "M", "<span class="s1">カローラ</span> <span class="s1">スポーツ</span>": "M", "<span class="s1">カローラ</span> <span class="s1">ツーリング</span>": "M", "<span class="s1">カローラ</span> <span class="s1">フィールダー</span>": "M", "<span class="s1">カローラ</span> <span class="s1">ランクス</span>": "M", "<span class="s1">カローラ</span> <span class="s1">レビン</span>": "M", "<span class="s1">ガイア</span>": "L", "<span class="s1">キャバリエ</span>": "M", "<span class="s1">キャミ</span>": "M", "<span class="s1">クラウン</span>": "L", "<span class="s1">クラウン</span> <span class="s1">エステート</span>": "LL", "<span class="s1">クラウン</span> <span class="s1">クロスオーバー</span>": "LL", "<span class="s1">クラウン</span> <span class="s1">マジェスタ</span>": "L", "<span class="s1">クラシック</span>": "L", "<span class="s1">クルーガー</span>": "LL", "<span class="s1">クレスタ</span>": "M", "<span class="s1">グランエース</span>": "XL", "<span class="s1">グランドハイエース</span>": "XL", "<span class="s1">グランビア</span>": "XL", "<span class="s1">サイノス</span>": "M", "<span class="s1">サクシード</span>": "M", "<span class="s1">シエンタ</span>": "M", "<span class="s1">スターレット</span>": "S", "<span class="s1">スパーキー</span>": "M", "<span class="s1">スプリンター</span>": "M", "<span class="s1">スプリンター</span> <span class="s1">トレノ</span>": "M", "<span class="s1">スペイド</span>": "M", "<span class="s1">スープラ</span>": "M", "<span class="s1">セラ</span>": "M", "<span class="s1">セリカ</span>": "M", "<span class="s1">セルシオ</span>": "L", "<span class="s1">センチュリー</span>": "LL", "<span class="s1">センチュリー</span> (SUV)": "XL", "<span class="s1">ソアラ</span>": "M", "<span class="s1">タウンエース</span>": "LL", "<span class="s1">タンク</span>": "M", "<span class="s1">ターセル</span>": "S", "<span class="s1">チェイサー</span>": "M", "<span class="s1">デュエット</span>": "S", "<span class="s1">ノア</span>": "LL", "<span class="s1">ハイエース</span>": "XL", "<span class="s1">ハイラックス</span>": "XL", "<span class="s1">ハイラックスサーフ</span>": "LL", "<span class="s1">ハリアー</span>": "LL", "<span class="s1">パッソ</span>": "S", "<span class="s1">パッソセッテ</span>": "M", "<span class="s1">ピクシス</span> (<span class="s1">各シリーズ</span>)": "S", "<span class="s1">ファンカーゴ</span>": "M", "<span class="s1">プレイド</span>": "M", "<span class="s1">ブレビス</span>": "M", "<span class="s1">プラッツ</span>": "M", "<span class="s1">プリウス</span>": "M", "<span class="s1">プリウス</span>α": "L", "<span class="s1">プリウス</span>PHV": "M", "<span class="s1">プレミオ</span>": "M", "<span class="s1">プログレ</span>": "M", "<span class="s1">プロナード</span>": "M", "<span class="s1">プロボックス</span>": "M", "<span class="s1">ベルタ</span>": "M", "<span class="s1">ポルテ</span>": "M", "<span class="s1">マーク</span>II": "M", "<span class="s1">マーク</span>X": "M", "<span class="s1">マーク</span>X<span class="s1">ジオ</span>": "L", "<span class="s1">ヤリス</span>": "S", "<span class="s1">ヤリスクロス</span>": "M", "<span class="s1">ライズ</span>": "M", "<span class="s1">ライトエース</span>": "LL", "<span class="s1">ラウム</span>": "M", "<span class="s1">ラクティス</span>": "M", "<span class="s1">ラッシュ</span>": "M", "<span class="s1">ランドクルーザー</span>": "XL", "<span class="s1">ルーミー</span>": "M", "<span class="s1">レジアス</span>": "XL", "<span class="s1">ヴァンガード</span>": "LL", "<span class="s1">ヴィッツ</span>": "S", "<span class="s1">ヴェルファイア</span>": "XL", "<span class="s1">ヴェロッサ</span>": "M", "<span class="s1">ヴォクシー</span>": "LL", "<span class="s1">ヴォルツ</span>": "M", "86": "M", "bB": "M", "bZ4X": "L", "C-HR": "L", "FJ<span class="s1">クルーザー</span>": "XL", "GR<span class="s1">ヤリス</span>": "S", "GR86": "M", "iQ": "S", "ist": "M", "MIRAI": "L", "MR-2": "M", "MR-S": "M", "RAV4": "LL", "SAI": "L", "WiLL <span class="s1">サイファ</span>": "M", "WiLL Vi": "M", "WiLL VS": "M"},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">日産</span>": {"<span class="s1">アベニール</span>": "M", "<span class="s1">アリア</span>": "L", "<span class="s1">インフィニティ</span> Q": "L", "<span class="s1">ウイングロード</span>": "M", "<span class="s1">エキスパート</span>": "M", "<span class="s1">エクストレイル</span>": "LL", "<span class="s1">エルグランド</span>": "XL", "<span class="s1">オッティ</span>": "S", "<span class="s1">キックス</span> (2020<span class="s1">年</span>~)": "L", "<span class="s1">キックス</span> (~2012)": "S", "<span class="s1">キャラバン</span>": "XL", "<span class="s1">キューブ</span>": "M", "<span class="s1">クリッパー</span>": "S", "<span class="s1">クルー</span>": "M", "<span class="s1">グロリア</span>": "M", "<span class="s1">サクラ</span>": "S", "<span class="s1">サニー</span>": "M", "<span class="s1">サファリ</span>": "XL", "<span class="s1">シルビア</span>": "M", "<span class="s1">シルフィ</span>": "M", "<span class="s1">シーマ</span>": "L", "<span class="s1">ジューク</span>": "M", "<span class="s1">スカイライン</span>": "M", "<span class="s1">スカイライン</span> <span class="s1">クロスオーバー</span>": "L", "<span class="s1">ステージア</span>": "M", "<span class="s1">セドリック</span>": "M", "<span class="s1">セフィーロ</span>": "M", "<span class="s1">セレナ</span>": "LL", "<span class="s1">ティアナ</span>": "M", "<span class="s1">ティーダ</span>": "M", "<span class="s1">ティーノ</span>": "M", "<span class="s1">テラノ</span>": "LL", "<span class="s1">デイズ</span>": "S", "<span class="s1">デイズルークス</span>": "S", "<span class="s1">デュアリス</span>": "L", "<span class="s1">ノート</span>": "M", "<span class="s1">ノートオーラ</span>": "M", "<span class="s1">バサラ</span>": "LL", "<span class="s1">バネット</span>": "LL", "<span class="s1">パオ</span>": "S", "<span class="s1">パルサー</span>": "M", "<span class="s1">ピノ</span>": "S", "<span class="s1">フィガロ</span>": "M", "<span class="s1">フェアレディ</span>Z": "M", "<span class="s1">フーガ</span>": "L", "<span class="s1">ブルーバード</span>": "M", "<span class="s1">プリメーラ</span>": "M", "<span class="s1">プレサージュ</span>": "LL", "<span class="s1">プレジデント</span>": "L", "<span class="s1">プレセア</span>": "M", "<span class="s1">ホーミー</span>": "XL", "<span class="s1">マイクラ</span>C+C": "S", "<span class="s1">マーチ</span>": "S", "<span class="s1">ムラーノ</span>": "LL", "<span class="s1">モコ</span>": "S", "<span class="s1">ラシーン</span>": "M", "<span class="s1">ラティオ</span>": "M", "<span class="s1">ラフェスタ</span>": "L", "<span class="s1">ラルゴ</span>": "LL", "<span class="s1">リバティ</span>": "L", "<span class="s1">リーフ</span>": "M", "<span class="s1">ルークス</span>": "S", "<span class="s1">レパード</span>": "M", "<span class="s1">ローレル</span>": "M", "180SX": "M", "AD": "M", "Be-1": "M", "e-NV200": "LL", "GT-R": "L", "NT100<span class="s1">クリッパー</span>": "S", "NV100<span class="s1">クリッパー</span>": "S", "NV200<span class="s1">バネット</span>": "LL", "NV350<span class="s1">キャラバン</span>": "XL"},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">ホンダ</span>": {"<span class="s1">アクティ</span>": "S", "<span class="s1">アコード</span>": "M", "<span class="s1">アヴァンシア</span>": "M", "<span class="s1">インサイト</span>": "M", "<span class="s1">インスパイア</span>": "M", "<span class="s1">インテグラ</span>": "M", "<span class="s1">エアウェイブ</span>": "M", "<span class="s1">エディックス</span>": "L", "<span class="s1">エリシオン</span>": "LL", "<span class="s1">エレメント</span>": "LL", "<span class="s1">オデッセイ</span>": "LL", "<span class="s1">オルティア</span>": "M", "<span class="s1">キャパ</span>": "M", "<span class="s1">クラリティ</span>": "L", "<span class="s1">クロスロード</span>": "L", "<span class="s1">グレイス</span>": "M", "<span class="s1">ザッツ</span>": "S", "<span class="s1">シティ</span>": "S", "<span class="s1">シビック</span>": "M", "<span class="s1">シャトル</span>": "M", "<span class="s1">ジェイド</span>": "M", "<span class="s1">ステップワゴン</span>": "LL", "<span class="s1">ストリート</span>": "S", "<span class="s1">ストリーム</span>": "L", "<span class="s1">セイバー</span>": "M", "<span class="s1">ゼスト</span>": "S", "<span class="s1">トゥデイ</span>": "S", "<span class="s1">トルネオ</span>": "M", "<span class="s1">バモス</span>": "S", "<span class="s1">パートナー</span>": "M", "<span class="s1">ビート</span>": "S", "<span class="s1">フィット</span>": "S", "<span class="s1">フィット</span> <span class="s1">クロスター</span>": "M", "<span class="s1">フィットシャトル</span>": "M", "<span class="s1">フリード</span>": "L", "<span class="s1">プレリュード</span>": "M", "<span class="s1">ホライゾン</span>": "LL", "<span class="s1">モビリオ</span>": "M", "<span class="s1">ライフ</span>": "S", "<span class="s1">ラグレイト</span>": "LL", "<span class="s1">レジェンド</span>": "L", "<span class="s1">ロゴ</span>": "S", "<span class="s1">ヴェゼル</span>": "L", "CR-V": "LL", "CR-X": "S", "CR-Z": "S", "Honda e": "S", "HR-V": "L", "MDX": "XL", "N-BOX": "S", "N-BOX+": "S", "N-BOX/": "S", "N-ONE": "S", "N-VAN": "S", "N-WGN": "S", "NSX": "L", "S-MX": "M", "S2000": "M", "S660": "S", "WR-V": "L", "Z": "S", "ZR-V": "L"},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">マツダ</span>": {"<span class="s1">アクセラ</span>": "M", "<span class="s1">アテンザ</span>": "M", "<span class="s1">キャロル</span>": "S", "<span class="s1">サバンナ</span>RX-7": "M", "<span class="s1">スクラム</span>": "S", "<span class="s1">スピアーノ</span>": "S", "<span class="s1">センティア</span>": "M", "<span class="s1">デミオ</span>": "S", "<span class="s1">トリビュート</span>": "LL", "<span class="s1">ビアンテ</span>": "LL", "<span class="s1">ファミリア</span>": "M", "<span class="s1">フレア</span>": "S", "<span class="s1">フレアクロスオーバー</span>": "S", "<span class="s1">フレアワゴン</span>": "S", "<span class="s1">プレマシー</span>": "L", "<span class="s1">ベリーサ</span>": "S", "<span class="s1">ボンゴ</span>": "XL", "<span class="s1">ミレーニア</span>": "M", "<span class="s1">ユーノスコスモ</span>": "L", "<span class="s1">ラピュタ</span>": "S", "<span class="s1">ランティス</span>": "M", "<span class="s1">ルーチェ</span>": "M", "<span class="s1">ロードスター</span>": "S", "AZ-<span class="s1">ワゴン</span>": "S", "AZ-1": "S", "AZ-3": "M", "CX-3": "M", "CX-30": "M", "CX-5": "L", "CX-60": "LL", "CX-7": "LL", "CX-8": "LL", "CX-80": "LL", "MAZDA2": "S", "MAZDA3": "M", "MAZDA6": "M", "MPV": "LL", "MX-30": "M", "RX-7": "M", "RX-8": "M"},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">スバル</span>": {"<span class="s1">アルシオーネ</span>": "L", "<span class="s1">アルシオーネ</span>SVX": "L", "<span class="s1">インプレッサ</span>": "M", "<span class="s1">インプレッサ</span> <span class="s1">スポーツ</span>": "M", "<span class="s1">インプレッサ</span> G4": "M", "<span class="s1">インプレッサ</span> STI": "M", "<span class="s1">インプレッサ</span> XV": "L", "<span class="s1">エクシーガ</span>": "LL", "<span class="s1">エクシーガ</span> <span class="s1">クロスオーバー</span>7": "LL", "<span class="s1">クロストレック</span>": "L", "<span class="s1">サンバー</span>": "S", "<span class="s1">シフォン</span>": "S", "<span class="s1">ジャスティ</span>": "M", "<span class="s1">ステラ</span>": "S", "<span class="s1">ソルテラ</span>": "L", "<span class="s1">ディアスワゴン</span>": "S", "<span class="s1">デックス</span>": "M", "<span class="s1">トラヴィック</span>": "LL", "<span class="s1">トレジア</span>": "M", "<span class="s1">ドミンゴ</span>": "S", "<span class="s1">フォレスター</span>": "LL", "<span class="s1">プレオ</span>": "S", "<span class="s1">ルクラ</span>": "S", "<span class="s1">レイバック</span>": "L", "<span class="s1">レガシィ</span> <span class="s1">アウトバック</span>": "L", "<span class="s1">レガシィ</span> <span class="s1">ツーリングワゴン</span>": "M", "<span class="s1">レガシィ</span> <span class="s1">ランカスター</span>": "L", "<span class="s1">レガシィ</span>B4": "M", "<span class="s1">レックス</span>": "M", "<span class="s1">レックス</span>(<span class="s1">軽自動車</span>)": "S", "<span class="s1">レヴォーグ</span>": "M", "<span class="s1">ヴィヴィオ</span>": "S", "BRZ": "M", "R1": "S", "R2": "S", "S210": "L", "WRX": "M", "XV": "L"},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">三菱</span>": {"<span class="s1">アイ</span>": "S", "<span class="s1">アウトランダー</span>": "LL", "<span class="s1">エクリプス</span>": "M", "<span class="s1">エクリプス</span> <span class="s1">クロス</span>": "LL", "<span class="s1">エクリプス</span> <span class="s1">スパイダー</span>": "M", "<span class="s1">ギャラン</span>": "M", "<span class="s1">ギャラン</span> <span class="s1">フォルティス</span>": "M", "<span class="s1">グランディス</span>": "LL", "<span class="s1">コルト</span>": "S", "<span class="s1">コルトプラス</span>": "M", "<span class="s1">シャリオ</span>": "LL", "<span class="s1">シャリオ</span> <span class="s1">グランディス</span>": "LL", "<span class="s1">ジープ</span>": "LL", "<span class="s1">スタリオン</span>": "M", "<span class="s1">タウンボックス</span>": "S", "<span class="s1">チャレンジャー</span>": "LL", "<span class="s1">ディアマンテ</span>": "L", "<span class="s1">ディオン</span>": "L", "<span class="s1">ディグニティ</span>": "L", "<span class="s1">デボネア</span>": "L", "<span class="s1">デリカスペースギア</span>": "XL", "<span class="s1">デリカバン</span>": "XL", "<span class="s1">デリカミニ</span>": "S", "<span class="s1">デリカ</span>D:2": "M", "<span class="s1">デリカ</span>D:3": "LL", "<span class="s1">デリカ</span>D:5": "XL", "<span class="s1">トッポ</span>": "S", "<span class="s1">トライトン</span>": "XL", "<span class="s1">パジェロイオ</span>": "L", "<span class="s1">パジェロジュニア</span>": "M", "<span class="s1">パジェロミニ</span>": "S", "<span class="s1">パジェロ</span>(<span class="s1">ショート</span>)": "LL", "<span class="s1">パジェロ</span>(<span class="s1">ロング</span>)": "XL", "<span class="s1">ブラボー</span>": "S", "<span class="s1">プラウディア</span>": "L", "<span class="s1">ミニカ</span>": "S", "<span class="s1">ミニキャブ</span>": "S", "<span class="s1">ミラージュ</span>": "S", "<span class="s1">ミラージュ</span> <span class="s1">アスティ</span>": "M", "<span class="s1">ミラージュ</span> <span class="s1">ディンゴ</span>": "M", "<span class="s1">ランサー</span>": "M", "<span class="s1">ランサー</span> <span class="s1">エボリューション</span>": "M", "<span class="s1">ランサーカーゴ</span>": "M", "<span class="s1">ランサーセディア</span>": "M", "<span class="s1">リベロ</span>": "M", "<span class="s1">レグナム</span>": "M", "eK<span class="s1">アクティブ</span>": "S", "eK<span class="s1">カスタム</span>": "S", "eK<span class="s1">クロス</span>": "S", "eK<span class="s1">スペース</span>": "S", "eK<span class="s1">スポーツ</span>": "S", "eK<span class="s1">ワゴン</span>": "S", "FTO": "M", "GTO": "M", "RVR": "L"},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">スズキ</span>": {"<span class="s1">アルト</span>": "S", "<span class="s1">アルト</span> <span class="s1">ラパン</span>": "S", "<span class="s1">アルトワークス</span>": "S", "<span class="s1">イグニス</span>": "S", "<span class="s1">エスクード</span>": "L", "<span class="s1">エリオ</span>": "M", "<span class="s1">エヴリィ</span>": "S", "<span class="s1">カプチーノ</span>": "S", "<span class="s1">カルタス</span>": "S", "<span class="s1">カルタス</span> <span class="s1">クレセント</span>": "M", "<span class="s1">キザシ</span>": "M", "<span class="s1">キャラ</span>": "S", "<span class="s1">キャリー</span>": "S", "<span class="s1">クロスビー</span>": "M", "<span class="s1">グランドエスクード</span>": "LL", "<span class="s1">ジムニー</span>": "S", "<span class="s1">ジムニーシエラ</span>": "M", "<span class="s1">ジムニーノマド</span>": "M", "<span class="s1">スイフト</span>": "S", "<span class="s1">スプラッシュ</span>": "S", "<span class="s1">スペーシア</span>": "S", "<span class="s1">スペーシアベース</span>": "S", "<span class="s1">セルボ</span>": "S", "<span class="s1">ソリオ</span>": "M", "<span class="s1">ツイン</span>": "S", "<span class="s1">ハスラー</span>": "S", "<span class="s1">バレーノ</span>": "S", "<span class="s1">パレット</span>": "S", "<span class="s1">フロンクス</span>": "M", "<span class="s1">マイティボーイ</span>": "S", "<span class="s1">ランディ</span>": "LL", "<span class="s1">ワゴン</span>R": "S", "<span class="s1">ワゴン</span>R<span class="s1">スマイル</span>": "S", "<span class="s1">ワゴン</span>R<span class="s1">ソリオ</span>": "M", "Kei": "S", "MR<span class="s1">ワゴン</span>": "S", "SX4": "M", "X-90": "S"},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">ダイハツ</span>": {"<span class="s1">アトレー</span>": "S", "<span class="s1">アトレー</span>7": "M", "<span class="s1">アルティス</span>": "L", "<span class="s1">ウェイク</span>": "S", "<span class="s1">エッセ</span>": "S", "<span class="s1">オプティ</span>": "S", "<span class="s1">キャスト</span>": "S", "<span class="s1">クー</span>": "M", "<span class="s1">グランマックス</span>": "LL", "<span class="s1">コペン</span>": "S", "<span class="s1">ストーリア</span>": "S", "<span class="s1">ソニカ</span>": "S", "<span class="s1">タフト</span>": "S", "<span class="s1">タント</span>": "S", "<span class="s1">タント</span> <span class="s1">エグゼ</span>": "S", "<span class="s1">テリオス</span>": "S", "<span class="s1">テリオスキッド</span>": "S", "<span class="s1">トール</span>": "M", "<span class="s1">ネイキッド</span>": "S", "<span class="s1">ハイゼット</span>": "S", "<span class="s1">ビーゴ</span>": "M", "<span class="s1">ブーン</span>": "S", "<span class="s1">ブーンルミナス</span>": "M", "<span class="s1">ミゼット</span>II": "S", "<span class="s1">ミラ</span>": "S", "<span class="s1">ミライース</span>": "S", "<span class="s1">ミラココア</span>": "S", "<span class="s1">ミラジーノ</span>": "S", "<span class="s1">ミラトコット</span>": "S", "<span class="s1">ムーヴ</span>": "S", "<span class="s1">ムーヴ</span> <span class="s1">キャンバス</span>": "S", "<span class="s1">ムーヴコンテ</span>": "S", "<span class="s1">ムーヴラテ</span>": "S", "<span class="s1">メビウス</span>": "L", "<span class="s1">ロッキー</span>": "M", "MAX": "S", "YRV": "M"},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">光岡自動車</span>": {"<span class="s1">オロチ</span>": "L", "<span class="s1">ガリュー</span>": "L", "<span class="s1">ガリュー</span>III": "L", "<span class="s1">ガリュー</span> <span class="s1">クラシック</span>": "M", "<span class="s1">ガリュー</span> <span class="s1">リムジン</span>": "L", "<span class="s1">ガリュー</span> 204": "M", "<span class="s1">ガリュー</span> <span class="s1">コンバーチブル</span>": "L", "<span class="s1">ヌエラ</span> 6-02": "M", "<span class="s1">バディ</span>": "LL", "<span class="s1">ヒミコ</span>": "M", "<span class="s1">ビュート</span>": "M", "<span class="s1">ライク</span>": "S", "<span class="s1">リューギ</span>": "M", "<span class="s1">ロックスター</span>": "M", "M55": "M"},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">メルセデス・ベンツ</span>": {"<span class="s1">バネオ</span>": "L", "<span class="s1">ビアノ</span>": "XL", "<span class="s1">ミディアムクラス</span>": "M", "190<span class="s1">クラス</span>": "M", "A<span class="s1">クラス</span>": "M", "B<span class="s1">クラス</span>": "M", "C<span class="s1">クラス</span>": "M", "CL<span class="s1">クラス</span>": "L", "CLA<span class="s1">クラス</span>": "M", "CLE<span class="s1">クラス</span>": "L", "CLK<span class="s1">クラス</span>": "M", "CLS<span class="s1">クラス</span>": "L", "E<span class="s1">クラス</span>": "L", "EQA": "L", "EQB": "L", "EQC": "L", "EQE<span class="s1">セダン</span>": "L", "EQG": "XL", "EQS SUV": "XL", "EQS<span class="s1">セダン</span>": "LL", "G<span class="s1">クラス</span>": "XL", "GL<span class="s1">クラス</span>": "XL", "GLA<span class="s1">クラス</span>": "M", "GLB<span class="s1">クラス</span>": "L", "GLC<span class="s1">クラス</span>": "L", "GLE<span class="s1">クラス</span>": "LL", "GLK<span class="s1">クラス</span>": "L", "GLS<span class="s1">クラス</span>": "XL", "M<span class="s1">クラス</span>": "LL", "R<span class="s1">クラス</span>": "LL", "S<span class="s1">クラス</span>": "LL", "SL<span class="s1">クラス</span>": "L", "SLC<span class="s1">クラス</span>": "M", "SLK<span class="s1">クラス</span>": "M", "SLR<span class="s1">クラス</span>": "L", "V<span class="s1">クラス</span>": "XL", "AMC A<span class="s1">クラス</span>": "M", "AMG C<span class="s1">クラス</span>": "M", "AMG CLA<span class="s1">クラス</span>": "M", "AMG CLE<span class="s1">クラス</span>": "L", "AMG CLS<span class="s1">クラス</span>": "L", "AMG E<span class="s1">クラス</span>": "L"},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">メルセデス</span>AMG/<span class="s1">マイバッハ</span>": {"AMG EQE<span class="s1">セダン</span>": "L", "AMG EQS<span class="s1">セダン</span>": "LL", "AMG G<span class="s1">クラス</span>": "XL", "AMG GL<span class="s1">クラス</span>": "XL", "AMG GLA<span class="s1">クラス</span>": "M", "AMG GLB<span class="s1">クラス</span>": "L", "AMG GLC<span class="s1">クラス</span>": "L", "AMG GLE<span class="s1">クラス</span>": "LL", "AMG GLS<span class="s1">クラス</span>": "XL", "AMG GT": "L", "AMG GT 4<span class="s1">ドアクーペ</span>": "L", "AMG M<span class="s1">クラス</span>": "LL", "AMG S<span class="s1">クラス</span>": "LL", "AMG SL<span class="s1">クラス</span>": "L", "AMG SLC<span class="s1">クラス</span>": "M", "<span class="s1">マイバッハ</span> GLS": "XL", "<span class="s1">マイバッハ</span> S<span class="s1">クラス</span>": "LL", "<span class="s1">マイバッハ</span> <span class="s1">５７</span>": "XL", "<span class="s1">マイバッハ</span> <span class="s1">６２</span>": "XL"},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">スマート</span>": {"<span class="s1">フォーツーカブリオ</span>": "S", "<span class="s1">フォーツークーペ</span>": "S", "<span class="s1">フォーフォー</span>": "S", "<span class="s1">ロードスター</span>": "S", "<span class="s1">Ｋ</span>": "S"},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"BMW": {"<span class="s1">１シリーズ</span>": "M", "<span class="s1">２シリーズ</span>": "M", "<span class="s1">３シリーズ</span>": "M", "<span class="s1">４シリーズ</span>": "M", "<span class="s1">５シリーズ</span>": "L", "<span class="s1">５シリーズ</span> GT": "L", "<span class="s1">６シリーズ</span>": "L", "<span class="s1">７シリーズ</span>": "LL", "<span class="s1">８シリーズ</span>": "LL", "<span class="s1">ｉ３</span>": "M", "<span class="s1">ｉ４</span>": "L", "<span class="s1">ｉ８</span>": "L", "<span class="s1">ｉＸ</span>": "LL", "<span class="s1">ｉＸ３</span>": "LL", "<span class="s1">Ｘ１</span>": "L", "<span class="s1">Ｘ２</span>": "L", "<span class="s1">Ｘ３</span>": "LL", "<span class="s1">Ｘ４</span>": "LL", "<span class="s1">Ｘ５</span>": "XL", "<span class="s1">Ｘ６</span>": "XL", "<span class="s1">Ｘ７</span>": "XL", "<span class="s1">ＸＭ</span>": "XL", "<span class="s1">Ｚ３</span>": "M", "<span class="s1">Ｚ４</span>": "M"},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">アウディ</span>": {"<span class="s1">オールロード</span> <span class="s1">クワトロ</span>": "L", "<span class="s1">Ａ１（Ｓ１）</span>": "M", "<span class="s1">Ａ３（Ｓ３</span>, <span class="s1">ＲＳ３）</span>": "M", "<span class="s1">Ａ４（Ｓ４，ＲＳ４）</span>": "M", "<span class="s1">Ａ５</span> <span class="s1">アバント</span>": "L", "<span class="s1">Ａ５（Ｓ５，ＲＳ５）</span>": "M", "<span class="s1">Ａ６（Ｓ６，ＲＳ６）</span>": "L", "<span class="s1">Ａ７（Ｓ７，ＲＳ７）</span>": "L", "<span class="s1">Ａ８（Ｓ８）</span>": "LL", "<span class="s1">ｅ－ｔｒｏｎ</span>": "LL", "<span class="s1">ｅ－ｔｒｏｎ</span> <span class="s1">スポーツバック</span>": "LL", "<span class="s1">ｅ－ｔｒｏｎ</span> <span class="s1">ＧＴクワトロ</span>": "LL", "<span class="s1">Ｑ２</span>": "M", "<span class="s1">Ｑ３（ＲＳ</span> <span class="s1">Ｑ３）</span>": "L", "<span class="s1">Ｑ４</span> <span class="s1">ｅ－ｔｒｏｎ</span>": "L", "<span class="s1">Ｑ５（Ｓ</span> <span class="s1">Ｑ５）</span>": "LL", "<span class="s1">Ｑ６</span> <span class="s1">ｅ－ｔｒｏｎ</span>": "LL", "<span class="s1">Ｑ７</span>": "XL", "<span class="s1">Ｑ８</span>": "XL", "<span class="s1">Ｒ８</span>": "L", "<span class="s1">Ｓ５</span> <span class="s1">アバント</span>": "L", "<span class="s1">ＳＱ６</span> <span class="s1">ｅ－ｔｒｏｎ</span>": "LL", "<span class="s1">ＴＴ</span>": "M"},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">フォルクスワーゲン</span>": {"<span class="s1">アルテオン</span>": "L", "<span class="s1">イオス</span>": "M", "<span class="s1">カルマンギア</span>": "S", "<span class="s1">クロスゴルフ</span>": "M", "<span class="s1">クロストゥーラン</span>": "L", "<span class="s1">クロスポロ</span>": "M", "<span class="s1">コラード</span>": "M", "<span class="s1">ゴルフ</span>": "M", "<span class="s1">ゴルフ</span> <span class="s1">オールトラック</span>": "M", "<span class="s1">ゴルフ</span> <span class="s1">トゥーラン</span>": "L", "<span class="s1">ゴルフ</span> <span class="s1">ヴァリアント</span>": "M", "<span class="s1">ザ・ビートル</span>": "M", "<span class="s1">シャラン</span>": "LL", "<span class="s1">シロッコ</span>": "M", "<span class="s1">ジェッタ</span>": "M", "<span class="s1">タイプ</span>Ⅰ": "M", "<span class="s1">タイプ</span>Ⅱ": "LL", "<span class="s1">タイプ</span>Ⅲ": "M", "<span class="s1">ティグアン</span>": "L", "<span class="s1">トゥアレグ</span>": "XL", "<span class="s1">ニュービートル</span>": "M", "<span class="s1">パサート</span>": "M", "<span class="s1">フォルクスワーゲン</span> <span class="s1">ＣＣ</span>": "M", "<span class="s1">ボーラ</span>": "M", "<span class="s1">ポロ</span>": "M", "<span class="s1">ルポ</span>": "S", "<span class="s1">ヴァナゴン</span>": "XL", "<span class="s1">ヴェント</span>": "M", "<span class="s1">ｃｒｏｓｓ</span> <span class="s1">ｕｐ！</span>": "S", "<span class="s1">ＩＤ．４</span>": "LL", "<span class="s1">ＩＤ：Ｂｕｚｚ</span>": "XL", "<span class="s1">Ｔ－Ｃｒｏｓｓ</span>": "M", "<span class="s1">Ｔ－Ｒｏｃ</span>": "L", "<span class="s1">Ｔ５</span>": "XL", "<span class="s1">ｕｐ！</span>": "S"},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">オペル</span>": {"<span class="s1">アストラ</span>": "M", "<span class="s1">ザフィーラ</span>": "M", "<span class="s1">シグナム</span>": "L", "<span class="s1">スピードスター</span>": "S", "<span class="s1">ベクトラ</span>": "M", "<span class="s1">ヴィータ</span>": "S"},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">ポルシェ</span>": {"<span class="s1">カイエン</span>": "XL", "<span class="s1">カレラ</span> <span class="s1">ＧＴ</span>": "L", "<span class="s1">ケイマン</span>": "M", "<span class="s1">タイカン</span>": "LL", "<span class="s1">パナメーラ</span>": "LL", "<span class="s1">ボクスター</span>": "M", "<span class="s1">マカン</span>": "LL", "<span class="s1">３５６</span>": "M", "<span class="s1">７１８ケイマン</span>": "M", "<span class="s1">７１８スパイダー</span>": "M", "<span class="s1">７１８ボクスター</span>": "M", "<span class="s1">９１１</span>": "M", "<span class="s1">９２８</span>": "M", "<span class="s1">９６８</span>": "M"},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">ミニ</span>": {"<span class="s1">エースマン</span>": "M", "<span class="s1">カントリーマン</span>": "L", "<span class="s1">クラブマン</span>": "M", "<span class="s1">クロスオーバー</span>": "M", "<span class="s1">クーペ</span>": "S", "<span class="s1">コンバーチブル</span>": "S", "<span class="s1">ペースマン</span>": "M", "<span class="s1">ロードスター</span>": "S", "<span class="s1">３ドア</span>": "S", "<span class="s1">５ドア</span>": "M"},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">キャデラック</span>": {"<span class="s1">エスカレード</span>": "XL", "<span class="s1">エルドラド</span>": "L", "<span class="s1">コンコース</span>": "L", "<span class="s1">セビル</span>": "L", "<span class="s1">デ・ビル</span>": "L", "<span class="s1">ドゥビル</span>": "L", "<span class="s1">フリートウッド</span>": "L", "<span class="s1">ブロアム</span>": "L", "<span class="s1">リムジン</span>": "L", "<span class="s1">リリック</span>": "LL", "<span class="s1">ＡＴＳ</span>": "M", "<span class="s1">ＣＴ４</span>": "M", "<span class="s1">ＣＴ５</span>": "L", "<span class="s1">ＣＴ６</span>": "L", "<span class="s1">ＣＴＳ</span>": "L", "<span class="s1">ＤＴＳ</span>": "L", "<span class="s1">ＳＲＸ</span>": "LL", "<span class="s1">ＳＴＳ</span>": "L", "<span class="s1">ＸＬＲ</span>": "M", "<span class="s1">ＸＴ４</span>": "L", "<span class="s1">ＸＴ５</span>": "LL", "<span class="s1">ＸＴ６</span>": "XL", "<span class="s1">ＸＴＳ</span>": "LL"},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">シボレー</span>": {"<span class="s1">アストロ</span>": "XL", "<span class="s1">アバランチ</span>": "XL", "<span class="s1">インパラ</span>": "L", "<span class="s1">エクスプレス</span>": "XL", "<span class="s1">オプトラ</span>": "L", "<span class="s1">カマロ</span>": "L", "<span class="s1">キャプティバ</span>": "LL", "<span class="s1">クルーズ</span>": "M", "<span class="s1">コルベット</span>": "L", "<span class="s1">サバーバン</span>": "XL", "<span class="s1">シルバラード</span>": "XL", "<span class="s1">ソニック</span>": "M", "<span class="s1">タホ</span>": "XL", "<span class="s1">トラバース</span>": "XL", "<span class="s1">トレイルブレイザー</span>": "LL", "<span class="s1">ノヴァ</span>": "L", "<span class="s1">ブレイザー</span>": "LL", "<span class="s1">Ｃ１５００</span>": "XL", "<span class="s1">ＨＨＲ</span>": "M", "<span class="s1">ＭＷ</span>": "M", "<span class="s1">Ｓ－１０ブレイザー</span>": "L"},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">ポンテアック</span>": {"<span class="s1">トランザム</span>": "L"},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">ハマー</span>": {"<span class="s1">Ｈ２</span>": "XL", "<span class="s1">Ｈ３</span>": "XL"},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"GMC": {"<span class="s1">ＧＭＣ</span> <span class="s1">サバーバン</span>": "XL", "<span class="s1">シエラ</span>": "XL", "<span class="s1">ユーコン</span>": "XL"},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">フォード</span>": {"<span class="s1">エクスカージョン</span>": "XL", "<span class="s1">エクスプローラー</span>": "XL", "<span class="s1">エクスペディション</span>": "XL", "<span class="s1">エコスポーツ</span>": "L", "<span class="s1">エコノライン</span>": "LL", "<span class="s1">エスケープ</span>": "LL", "<span class="s1">エスコート</span>": "M", "<span class="s1">クーガ</span>": "LL", "<span class="s1">サンダーバード</span>": "L", "<span class="s1">フィエスタ</span>": "M", "<span class="s1">フォーカス</span>": "M", "<span class="s1">ブロンコ</span>": "XL", "<span class="s1">マスタング</span>": "L", "<span class="s1">Ｆ－１５０</span>": "XL"},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">リンカーン</span>": {"<span class="s1">コンチネンタル</span>": "L", "<span class="s1">タウンカー</span>": "LL", "<span class="s1">ナビゲーター</span>": "XL", "<span class="s1">ＭＫＸ</span>": "L"},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">クライスラー</span>": {"<span class="s1">イプシロン</span>": "M", "<span class="s1">クロスファイア</span>": "M", "<span class="s1">セブリング</span>": "M", "<span class="s1">３００</span>": "L", "<span class="s1">３００Ｃ</span>": "L", "<span class="s1">３００Ｍ</span>": "L", "<span class="s1">ＰＴクルーザー</span>": "M"},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">ダッジ</span>": {"<span class="s1">キャリバー</span>": "L", "<span class="s1">チャレンジャー</span>": "LL", "<span class="s1">チャージャー</span>": "L", "<span class="s1">デュランゴ</span>": "XL", "<span class="s1">ナイトロ</span>": "LL", "<span class="s1">バイパー</span>": "L", "<span class="s1">バン</span>": "XL", "<span class="s1">マグナム</span>": "L", "<span class="s1">ラム</span>": "XL"},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">ジープ</span>": {"<span class="s1">グラディエーター</span>": "XL", "<span class="s1">グランドチェロキー</span>": "XL", "<span class="s1">コマンダー</span>": "XL", "<span class="s1">コンパス</span>": "LL", "<span class="s1">チェロキー</span>": "LL", "<span class="s1">パトリオット</span>": "L", "<span class="s1">ラングラー</span>": "LL", "<span class="s1">レネゲード</span>": "L"},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"DMC": {"<span class="s1">１２デロリアン</span>": "L"},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">テスラ</span>": {"<span class="s1">モデル３</span>": "M", "<span class="s1">モデルＳ</span>": "L", "<span class="s1">モデルＸ</span>": "LL", "<span class="s1">モデルＹ</span>": "LL"},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">米国インフィニティ</span>/<span class="s1">トヨタ</span>/<span class="s1">ホンダ</span>": {"<span class="s1">ＦＸ</span>": "LL", "<span class="s1">Ｑ５０</span>": "M", "<span class="s1">Ｑ６０</span>": "M", "<span class="s1">ＱＸ</span>": "XL", "<span class="s1">カムリ</span> <span class="s1">ソラーラ</span>": "L", "<span class="s1">シエナ</span>": "XL", "<span class="s1">セコイア</span>": "XL", "<span class="s1">タコマ</span>": "XL", "<span class="s1">タンドラ</span>": "XL", "<span class="s1">４ランナー</span>": "XL", "<span class="s1">リッジライン</span>": "XL"},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">ロールスロイス</span>": {"<span class="s1">カリナン</span>": "XL", "<span class="s1">ゴースト</span>": "LL", "<span class="s1">スペクター</span>": "XL", "<span class="s1">ドーン</span>": "LL", "<span class="s1">ファントム</span>": "XL", "<span class="s1">レイス</span>": "LL"},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">ベントレー</span>": {"<span class="s1">アルナージ</span>": "LL", "<span class="s1">コンチネンタル</span>": "L", "<span class="s1">フライングスパー</span>": "LL", "<span class="s1">ベンテイガ</span>": "XL", "<span class="s1">ミュルザンヌ</span>": "LL"},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">ジャガー</span>": {"<span class="s1">Ｅペイス</span>": "L", "<span class="s1">Ｆタイプ</span>": "M", "<span class="s1">Ｆペイス</span>": "LL", "<span class="s1">Ｉペイス</span>": "LL", "<span class="s1">Ｓタイプ</span>": "L", "<span class="s1">Ｘタイプ</span>": "L", "<span class="s1">ＸＥ</span>": "M", "<span class="s1">ＸＦ</span>": "L", "<span class="s1">ＸＪ</span>": "L", "<span class="s1">ＸＫ</span>": "L"},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">デイムラー</span>": {"<span class="s1">デイムラー</span>": "L"},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">ランドローバー</span>": {"<span class="s1">ディスカバリー</span>": "XL", "<span class="s1">ディスカバリー</span> <span class="s1">スポーツ</span>": "LL", "<span class="s1">ディフェンダー</span>": "XL", "<span class="s1">フリーランダー</span>": "LL", "<span class="s1">レンジローバー</span>": "XL", "<span class="s1">レンジローバー</span> <span class="s1">イヴォーク</span>": "LL", "<span class="s1">レンジローバー</span> <span class="s1">スポーツ</span>": "LL", "<span class="s1">レンジローバー</span> <span class="s1">ヴェラール</span>": "LL", "<span class="s1">レンジローバー</span> <span class="s1">ヴォーグ</span>": "XL"},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">アストンマーティン</span>": {"<span class="s1">シグネット</span>": "M", "<span class="s1">ラピード</span>": "LL", "<span class="s1">ヴァンキッシュ</span>": "LL", "<span class="s1">ヴァンテージ</span>": "LL", "<span class="s1">ヴィラージュ</span>": "LL", "<span class="s1">ＤＢ１１</span>": "LL", "<span class="s1">ＤＢ７</span>": "LL", "<span class="s1">ＤＢ９</span>": "LL", "<span class="s1">ＤＢＳ</span>": "LL", "<span class="s1">ＤＢＸ</span>": "XL", "<span class="s1">Ｖ１２ヴァンキッシュ</span>": "LL", "<span class="s1">Ｖ１２ヴァンテージ</span>": "LL", "<span class="s1">Ｖ８</span>": "LL"},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">ロータス</span>": {"<span class="s1">エキシージ</span>": "M", "<span class="s1">エスプリ</span>": "M", "<span class="s1">エミーラ</span>": "L", "<span class="s1">エラン</span>": "M", "<span class="s1">エリーゼ</span>": "M", "<span class="s1">エレトレ</span>": "XL", "<span class="s1">エヴォーラ</span>": "L", "<span class="s1">ヨーロッパ</span>": "M"},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">マクラーレン</span>": {"<span class="s1">アルトゥーラ</span>": "LL", "<span class="s1">５４０Ｃ</span>": "LL", "<span class="s1">５７０ＧＴ</span>": "LL", "<span class="s1">５７０Ｓ</span>": "LL", "<span class="s1">６００ＬＴ</span>": "LL", "<span class="s1">６５０Ｓ</span>": "LL", "<span class="s1">６７５ＬＴ</span>": "LL", "<span class="s1">７２０Ｓ</span>": "LL", "<span class="s1">７５０Ｓ</span>": "LL", "<span class="s1">７６５ＬＴ</span>": "LL", "<span class="s1">ＧＴ</span>": "LL", "<span class="s1">ＭＰ４－１２Ｃ</span>": "LL"},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"TVR": {"<span class="s1">タスカン</span>": "M"},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">ローバー</span>/<span class="s1">オースチン</span>/<span class="s1">モーリス</span>": {"<span class="s1">ミニ</span>": "S"},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">ボルボ</span>": {"<span class="s1">２４０</span>": "M", "<span class="s1">７４０</span>": "M", "<span class="s1">８５０</span>": "M", "<span class="s1">９４０</span>": "M", "<span class="s1">９６０</span>": "M", "<span class="s1">Ｃ３０</span>": "M", "<span class="s1">Ｃ４０</span>": "M", "<span class="s1">Ｃ７０</span>": "M", "<span class="s1">ＥＸ３０</span>": "L", "<span class="s1">Ｐ１８００</span>": "M", "<span class="s1">Ｓ４０</span>": "M", "<span class="s1">Ｓ６０</span>": "M", "<span class="s1">Ｓ７０</span>": "M", "<span class="s1">Ｓ８０</span>": "M", "<span class="s1">Ｓ９０</span>": "L", "<span class="s1">Ｖ４０</span>": "M", "<span class="s1">Ｖ５０</span>": "M", "<span class="s1">Ｖ６０</span>": "L", "<span class="s1">Ｖ７０</span>": "L", "<span class="s1">Ｖ９０</span>": "L", "<span class="s1">ＸＣ４０</span>": "L", "<span class="s1">ＸＣ６０</span>": "LL", "<span class="s1">ＸＣ７０</span>": "LL", "<span class="s1">ＸＣ９０</span>": "XL"},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">サーブ</span>": {"<span class="s1">９－３</span>": "M", "<span class="s1">９－５</span>": "M", "<span class="s1">９００</span>": "M", "<span class="s1">９０００</span>": "M"},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">プジョー</span>": {"<span class="s1">リフター</span>": "LL", "<span class="s1">１００７</span>": "M", "<span class="s1">１０６</span>": "M", "<span class="s1">２００８</span>": "L", "<span class="s1">２０６</span>": "M", "<span class="s1">２０６ＣＣ</span>": "M", "<span class="s1">２０６ＳＷ</span>": "M", "<span class="s1">２０７</span>": "M", "<span class="s1">２０７ＣＣ</span>": "M", "<span class="s1">２０７ＳＷ</span>": "M", "<span class="s1">２０８</span>": "M", "<span class="s1">３００８</span>": "LL", "<span class="s1">３０６</span>": "M", "<span class="s1">３０７</span>": "M", "<span class="s1">３０７ＣＣ</span>": "M", "<span class="s1">３０７ＳＷ</span>": "M", "<span class="s1">３０８</span>": "M", "<span class="s1">３０８ＣＣ</span>": "M", "<span class="s1">３０８ＳＷ</span>": "M", "<span class="s1">４０６</span>": "M", "<span class="s1">４０７</span>": "M", "<span class="s1">４０７ＳＷ</span>": "M", "<span class="s1">４０８</span>": "M", "<span class="s1">５００８</span>": "LL", "<span class="s1">５０８</span>": "M", "<span class="s1">５０８ＳＷ</span>": "M", "<span class="s1">６０７</span>": "M", "<span class="s1">ｅ－２０８</span>": "M", "<span class="s1">ＲＣＺ</span>": "M", "<span class="s1">ＳＵＶ</span> <span class="s1">２００８</span>": "L", "<span class="s1">ＳＵＶ</span> <span class="s1">ｅ－２００８</span>": "L"},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">ルノー</span>": {"<span class="s1">アルカナ</span>": "L", "<span class="s1">アヴァンタイム</span>": "L", "<span class="s1">ウインド</span>": "M", "<span class="s1">カジャー</span>": "L", "<span class="s1">カングー</span>": "LL", "<span class="s1">キャプチャー</span>": "M", "<span class="s1">グランセニック</span>": "L", "<span class="s1">コレオス</span>": "LL", "<span class="s1">セニックＲＸ－４</span>": "L", "<span class="s1">トゥインゴ</span>": "S", "<span class="s1">メガーヌ</span>": "M", "<span class="s1">ルーテシア</span>": "M"},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">シトロエン</span>": {"<span class="s1">グランドＣ４スペースツアラー</span>": "LL", "<span class="s1">グランドＣ４ピカソ</span>": "LL", "<span class="s1">ベルランゴ</span>": "LL", "<span class="s1">Ｃ２</span>": "M", "<span class="s1">Ｃ３</span>": "M", "<span class="s1">Ｃ３エアクロス</span>": "L", "<span class="s1">Ｃ４</span>": "M", "<span class="s1">Ｃ４カクタス</span>": "M", "<span class="s1">Ｃ４クーペ</span>": "M", "<span class="s1">Ｃ４ピカソ</span>": "L", "<span class="s1">Ｃ５</span>": "M", "<span class="s1">Ｃ５エアクロスＳＵＶ</span>": "LL", "<span class="s1">Ｃ５Ｘ</span>": "L", "<span class="s1">Ｃ６</span>": "M", "<span class="s1">ＤＳ３</span>": "M", "<span class="s1">ＤＳ４</span>": "M", "<span class="s1">ＤＳ５</span>": "M"},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"DS<span class="s1">オートモビル</span>": {"<span class="s1">ＤＳ３クロスバック</span>": "M", "<span class="s1">ＤＳ７クロスバック</span>": "LL", "<span class="s1">ＤＳ９</span>": "L"},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">フィアット</span>": {"<span class="s1">グランデプント</span>": "M", "<span class="s1">ドブロ</span>": "LL", "<span class="s1">バルケッタ</span>": "M", "<span class="s1">パンダ</span>": "S", "<span class="s1">プント</span>": "S", "<span class="s1">ムルティプラ</span>": "L", "<span class="s1">５００</span>": "S", "<span class="s1">５００Ｃ</span>": "S", "<span class="s1">５００Ｌ</span>": "S", "<span class="s1">５００Ｘ</span>": "M", "<span class="s1">６００</span>": "M"},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">アバルト</span>": {"<span class="s1">グランデプント</span>": "S", "<span class="s1">プント</span>": "S", "<span class="s1">プントエヴォ</span>": "S", "<span class="s1">１２４スパイダー</span>": "S", "<span class="s1">５００</span>": "S", "<span class="s1">５００Ｃ</span>": "S", "<span class="s1">５９５</span>": "S", "<span class="s1">５９５Ｃ</span>": "S", "<span class="s1">６９５</span>": "S"},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">アルファロメオ</span>": {"<span class="s1">アルファスパイダー</span>": "M", "<span class="s1">アルファブレラ</span>": "M", "<span class="s1">アルファ１４７</span>": "M", "<span class="s1">アルファ１５６</span>": "M", "<span class="s1">アルファ１５９</span>": "M", "<span class="s1">アルファ１６６</span>": "M", "<span class="s1">アルファＧＴ</span>": "M", "<span class="s1">アルファＧＴＶ</span>": "M", "<span class="s1">ジュニア</span>": "M", "<span class="s1">ジュリア</span>": "M", "<span class="s1">ジュリエッタ</span>": "M", "<span class="s1">ステルヴィオ</span>": "LL", "<span class="s1">トナーレ</span>": "LL", "<span class="s1">ミト</span>": "M", "<span class="s1">４Ｃ</span>": "M", "<span class="s1">８Ｃ</span>": "L"},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">フェラーリ</span>": {"<span class="s1">カリフォルニア</span>": "LL", "<span class="s1">テスタロッサ</span>": "LL", "<span class="s1">プロサングエ</span>": "XL", "<span class="s1">ポルトフィーノ</span>": "LL", "<span class="s1">ローマ</span>": "LL", "<span class="s1">２９６ＧＴＢ</span>": "LL", "<span class="s1">２９６ＧＴＳ</span>": "LL", "<span class="s1">３０８</span>": "M", "<span class="s1">３２８</span>": "LL", "<span class="s1">３４８</span>": "LL", "<span class="s1">３６０</span>": "LL", "<span class="s1">３６０スパイダー</span>": "LL", "<span class="s1">４３０スクーデリア</span>": "LL", "<span class="s1">４５６</span>": "LL", "<span class="s1">４５８</span>": "LL", "<span class="s1">４５８スパイダー</span>": "LL", "<span class="s1">４８８</span>": "LL", "<span class="s1">４８８スパイダー</span>": "LL", "<span class="s1">５１２</span>": "LL", "<span class="s1">５５０マラネロ</span>": "LL", "<span class="s1">５９９</span>": "LL", "<span class="s1">６１２</span>": "LL", "<span class="s1">８１２</span>": "LL", "<span class="s1">Ｆ１２</span>": "LL", "<span class="s1">Ｆ３５５</span>": "LL", "<span class="s1">Ｆ４０</span>": "LL", "<span class="s1">Ｆ４３０</span>": "LL", "<span class="s1">Ｆ４３０スパイダー</span>": "LL", "<span class="s1">Ｆ５０</span>": "LL", "<span class="s1">Ｆ８スパイダー</span>": "LL", "<span class="s1">Ｆ８トリブート</span>": "LL", "<span class="s1">ＦＦ</span>": "LL", "<span class="s1">ＧＴＣ４ルッソ</span>": "LL", "<span class="s1">ＳＦ９０ストラダーレ</span>": "LL"},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">ランボルギーニ</span>": {"<span class="s1">アヴェンタドール</span>": "LL", "<span class="s1">ウラカン</span>": "LL", "<span class="s1">ウルス</span>": "XL", "<span class="s1">カウンタック</span>": "LL", "<span class="s1">ガヤルド</span>": "LL", "<span class="s1">ディアブロ</span>": "LL", "<span class="s1">ムルシエラゴ</span>": "LL", "<span class="s1">レヴエルト</span>": "LL"},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">マセラティ</span>": {"<span class="s1">ギブリ</span>": "L", "<span class="s1">クアトロポルテ</span>": "LL", "<span class="s1">クーペ</span>": "L", "<span class="s1">グランカブリオ</span>": "L", "<span class="s1">グラントゥーリズモ</span>": "L", "<span class="s1">グレカーレ</span>": "LL", "<span class="s1">レヴァンテ</span>": "XL", "<span class="s1">３２００ＧＴ</span>": "L", "<span class="s1">ＭＣ２０</span>": "LL"},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">ランチア</span>": {"<span class="s1">イプシロン</span>": "M", "<span class="s1">デルタ</span>": "M"},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">オールズモビル</span>": {"<span class="s1">オーロラ</span>": "L"},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">アルピーヌ</span>": {"<span class="s1">Ａ１１０</span>": "M"},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"BYD": {"<span class="s1">シーライオン７</span>": "LL", "<span class="s1">ＡＴＴＯ</span> <span class="s1">３</span>": "LL", "<span class="s1">ＤＯＬＰＨＩＮ</span>": "M", "<span class="s1">ＳＥＡＬ</span>": "L"},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">ヒョンデ</span>": {"<span class="s1">インスタ</span>―": "M", "<span class="s1">コナ</span>": "L", "<span class="s1">ＩＯＮＩＱ５</span>": "LL", "<span class="s1">ＮＥＸＯ</span>": "LL"},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">ダラーラ</span>": {"<span class="s1">ストラダーレ</span>": "LL"},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">米国インフィニティ</span>": {}, "<span class="s1">北米トヨタ</span>": {}, "<span class="s1">北米ホンダ</span>": {},<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>const priceData = {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">ミスト洗車</span>": { S: 1900, M: 3000, L: 3600, LL: 4000, XL: 5200 },</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">撥水ワックスコート洗車</span>": { S: 2600, M: 3600, L: 4200, LL: 4700, XL: 5900 },</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">撥水ポリマーコート洗車</span>": { S: 9000, M: 10000, L: 11000, LL: 12000, XL: 13000 },</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">ガラスコート１面</span>": { S: 1000, M: 1000, L: 1000, LL: 1000, XL: 1000 },</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">ガラスコート全面</span>": { S: 2000, M: 2000, L: 3000, LL: 3000, XL: 3000 },<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">虫取り</span>": { S: 500, M: 500, L: 500, LL: 500, XL: 500 },</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">車内清掃</span>": { S: 1800, M: 2300, L: 2800, LL: 3300, XL: 3800 },</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"<span class="s1">除菌＆消臭</span>(<span class="s1">車内</span>)": { S: 2200, M: 2200, L: 2200, LL: 3300, XL: 3300 },</p>
+<p class="p1"><span class="Apple-converted-space">    </span>};</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function searchCarSize() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const inputElement = document.getElementById('carNameInput');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const resultElement = document.getElementById('result');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const countDisplay = document.getElementById('count-display');</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const rawInput = inputElement.value.trim();</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (rawInput === "") {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>resultElement.innerHTML = `&lt;div id="result-placeholder"&gt;<span class="s1">入力された車種・メーカーに該当するサイズと価格が表示されます。</span>&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>countDisplay.textContent = "";</p>
+<p class="p1"><span class="Apple-converted-space">            </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const normalizedInput = rawInput.replace(/[<span class="s1">　</span>\s\(\)<span class="s1">・</span>,.:\-!~]/g, '').toLowerCase();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const matchingCars = [];</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>for (const maker in carDataByMaker) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const normalizedMaker = maker.replace(/[<span class="s1">　</span>\s\(\)<span class="s1">・</span>,.:\-!~]/g, '').toLowerCase();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const cars = carDataByMaker[maker];</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (normalizedMaker.includes(normalizedInput)) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>for (const carName in cars) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>matchingCars.push({maker: maker, name: carName, size: cars[carName]});</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>for (const carName in cars) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const normalizedCarName = carName.replace(/[<span class="s1">　</span>\s\(\)<span class="s1">・</span>,.:\-!~]/g, '').toLowerCase();</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (normalizedCarName.includes(normalizedInput)) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>const isDuplicate = matchingCars.some(item =&gt; item.maker === maker &amp;&amp; item.name === carName);</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>if (!isDuplicate) {</p>
+<p class="p1"><span class="Apple-converted-space">                         </span>matchingCars.push({maker: maker, name: carName, size: cars[carName]});</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (matchingCars.length === 0) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>resultElement.innerHTML = `&lt;div id="result-placeholder"&gt;<span class="s1">「</span>${rawInput}<span class="s1">」に該当する車種は見つかりませんでした。</span>&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>countDisplay.textContent = "";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>matchingCars.sort((a, b) =&gt; a.name.localeCompare(b.name, 'ja'));</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>let html = '';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>matchingCars.forEach(car =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const fullCarName = `${car.maker} ${car.name}`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>html += `</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="result-item"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="car-info"&gt;${fullCarName}&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="result-size size-${car.size.toLowerCase()}"&gt;${car.size}&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;button class="price-button" onclick="openModal('${fullCarName}', '${car.size}')"&gt;<span class="s1">価格を確認</span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>resultElement.innerHTML = html;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>countDisplay.textContent = `<span class="s1">該当件数</span>: ${matchingCars.length}<span class="s1">件</span>`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function openModal(carName, size) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('modalTitle').textContent = carName;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('modalSize').textContent = size;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const priceTableElement = document.getElementById('priceTable');</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>let html = '';</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>html += `&lt;div class="service-group"&gt;&lt;strong&gt;<span class="s1">ミスト洗車</span>&lt;/strong&gt;&lt;span&gt;¥${priceData["<span class="s1">ミスト洗車</span>"][size].toLocaleString()}&lt;/span&gt;&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>html += `&lt;div&gt;&lt;strong&gt;<span class="s1">撥水ワックスコート洗車</span>&lt;/strong&gt;&lt;span&gt;¥${priceData["<span class="s1">撥水ワックスコート洗車</span>"][size].toLocaleString()}&lt;/span&gt;&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>html += `&lt;div&gt;&lt;strong&gt;<span class="s1">撥水ポリマーコート洗車</span>&lt;/strong&gt;&lt;span&gt;¥${priceData["<span class="s1">撥水ポリマーコート洗車</span>"][size].toLocaleString()}&lt;/span&gt;&lt;/div&gt;`;</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>html += `&lt;div class="service-group"&gt;&lt;strong&gt;--- <span class="s1">オプション</span> ---&lt;/strong&gt;&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>html += `&lt;div&gt;&lt;strong&gt;<span class="s1">ガラスコート</span> 1<span class="s1">面</span>&lt;/strong&gt;&lt;span&gt;¥${priceData["<span class="s1">ガラスコート１面</span>"][size].toLocaleString()}&lt;/span&gt;&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>html += `&lt;div&gt;&lt;strong&gt;<span class="s1">ガラスコート</span> <span class="s1">全面</span>&lt;/strong&gt;&lt;span&gt;¥${priceData["<span class="s1">ガラスコート全面</span>"][size].toLocaleString()}&lt;/span&gt;&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>html += `&lt;div&gt;&lt;strong&gt;<span class="s1">虫取り</span>&lt;/strong&gt;&lt;span&gt;¥${priceData["<span class="s1">虫取り</span>"][size].toLocaleString()}&lt;/span&gt;&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>html += `&lt;div&gt;&lt;strong&gt;<span class="s1">車内清掃</span>&lt;/strong&gt;&lt;span&gt;¥${priceData["<span class="s1">車内清掃</span>"][size].toLocaleString()}&lt;/span&gt;&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>html += `&lt;div&gt;&lt;strong&gt;<span class="s1">除菌＆消臭</span> (<span class="s1">車内</span>)&lt;/strong&gt;&lt;span&gt;¥${priceData["<span class="s1">除菌＆消臭</span>(<span class="s1">車内</span>)"][size].toLocaleString()}&lt;/span&gt;&lt;/div&gt;`;</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>priceTableElement.innerHTML = html;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('priceModal').style.display = 'block';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function closeModal() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('priceModal').style.display = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>window.onclick = function(event) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const modal = document.getElementById('priceModal');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (event.target == modal) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>closeModal();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1">&lt;/script&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
