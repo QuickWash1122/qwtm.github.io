@@ -15,7 +15,7 @@
             display: flex;
             flex-direction: column;
         }
-        
+
         .header-bar {
             width: 100%;
             height: 60px; 
@@ -30,8 +30,15 @@
             background-repeat: no-repeat;
             background-position: center; /* 中央に配置 */
         }
-        
-        /* .header-logoのスタイルは不要になったため削除しました */
+
+        .h-logo {
+            width: 100%;
+            height: 60px;
+            text-align: center;
+        }
+        .h-logo-img {
+            height: 100%;
+        }
 
         .container {
             width: 95%;
@@ -42,6 +49,7 @@
             border-radius: 12px;
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
             flex-grow: 1; 
+            box-sizing: border-box;
         }
         h1 {
             text-align: center;
@@ -178,6 +186,7 @@
 <body>
 
 <div class="header-bar">
+    <div class="h-logo"><img src="images/logo.png" alt="logo" class="h-logo-img"></div>
 </div>
 
 <div class="container">
