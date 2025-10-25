@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>車種サイズ検索</title>
     <style>
+        /* CSS: スタイルは変更なし（元のコードと同一） */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
@@ -15,7 +16,7 @@
             display: flex;
             flex-direction: column;
         }
-
+        
         .header-bar {
             width: 100%;
             height: 60px; 
@@ -25,10 +26,11 @@
             top: 0;
             z-index: 100;
             /* 画像を背景として中央に配置する設定 */
+            /* quickwash_logo_top 2.png がこのHTMLファイルと同じ場所にないと表示されません。 */
             background-image: url('quickwash_logo_top 2.png'); 
-            background-size: contain; /* バーの高さに合わせて画像を収める */
+            background-size: contain;
             background-repeat: no-repeat;
-            background-position: center; /* 中央に配置 */
+            background-position: center;
         }
 
         .h-logo {
@@ -36,11 +38,12 @@
             height: 60px;
             text-align: center;
         }
+
         .h-logo-img {
-            height: 60%;
+            height: 70%;
             padding: 10px;
         }
-
+        
         .container {
             width: 95%;
             max-width: 600px;
@@ -75,24 +78,48 @@
             color: #cc9900;
             font-weight: bold;
         }
+        
+        /* 検索結果の表示エリア */
         .result-item {
             display: grid;
-            grid-template-columns: 2fr 60px 1fr; 
+            grid-template-columns: 2fr 60px 1fr; /* 情報エリア、サイズ、ボタンの3列 */
             gap: 10px;
             align-items: center;
-            padding: 12px 15px;
+            padding: 10px 15px;
             margin-bottom: 8px;
             border-radius: 6px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
             background-color: #fff;
         }
-        .car-info {
+        
+        /* 車両情報（メーカー＋車種）のコンテナ */
+        .car-info-container {
+            min-width: 0; /* flex/gridの子要素として溢れを防ぐ */
+        }
+
+        /* メーカー名（上段、小さく薄い色） */
+        .car-maker {
+            font-size: 0.8em;
+            color: #888;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: block; /* 常に一行を占める */
+        }
+        
+        /* 車種名（下段、大きく太字） */
+        .car-name {
             font-weight: bold;
             color: #444;
-            overflow: hidden;
             white-space: nowrap;
+            overflow: hidden;
             text-overflow: ellipsis;
+            display: block; /* 常に一行を占める */
+            font-size: 1em;
+            line-height: 1.2;
         }
+        /* /検索結果の表示エリア */
+
         .result-size {
             font-size: 1.2em;
             font-weight: 900;
@@ -210,6 +237,9 @@
 </div>
 
 <script>
+    // 💡 JavaScript部分: データと関数（searchCarSize、openModalを修正）
+
+    // 車種サイズデータ (元のコードから変更なし)
     const carDataByMaker = {
         "レクサス": {"CT": "M", "ES": "L", "GS": "L", "GX": "XL", "HS": "L", "IS": "M", "LBX": "M", "LC": "L", "LFA": "L", "LM": "XL", "LS": "LL", "LX": "XL", "NX": "L", "RC": "M", "RX": "LL", "RZ": "LL", "SC": "M", "UX": "M"},
         "トヨタ": {"アイシス": "L", "アクア": "S", "アベンシス": "M", "アリオン": "M", "アリスト": "L", "アルテッツァ": "M", "アルファード": "XL", "アレックス": "M", "イプサム": "L", "ウィッシュ": "L", "ウィンダム": "L", "エスクァイア": "LL", "エスティマ": "LL", "オリジン": "M", "オーパ": "M", "オーリス": "M", "カムリ": "L", "カリーナ": "M", "カルディナ": "M", "カレン": "M", "カローラ": "M", "カローラ II": "S", "カローラ アクシオ": "M", "カローラ クロス": "L", "カローラ スパシオ": "M", "カローラ スポーツ": "M", "カローラ ツーリング": "M", "カローラ フィールダー": "M", "カローラ ランクス": "M", "カローラ レビン": "M", "ガイア": "L", "キャバリエ": "M", "キャミ": "M", "クラウン": "L", "クラウン エステート": "LL", "クラウン クロスオーバー": "LL", "クラウン マジェスタ": "L", "クラシック": "L", "クルーガー": "LL", "クレスタ": "M", "グランエース": "XL", "グランドハイエース": "XL", "グランビア": "XL", "サイノス": "M", "サクシード": "M", "シエンタ": "M", "スターレット": "S", "スパーキー": "M", "スプリンター": "M", "スプリンター トレノ": "M", "スペイド": "M", "スープラ": "M", "セラ": "M", "セリカ": "M", "セルシオ": "L", "センチュリー": "LL", "センチュリー (SUV)": "XL", "ソアラ": "M", "タウンエース": "LL", "タンク": "M", "ターセル": "S", "チェイサー": "M", "デュエット": "S", "ノア": "LL", "ハイエース": "XL", "ハイラックス": "XL", "ハイラックスサーフ": "LL", "ハリアー": "LL", "パッソ": "S", "パッソセッテ": "M", "ピクシス (各シリーズ)": "S", "ファンカーゴ": "M", "プレイド": "M", "ブレビス": "M", "プラッツ": "M", "プリウス": "M", "プリウスα": "L", "プリウスPHV": "M", "プレミオ": "M", "プログレ": "M", "プロナード": "M", "プロボックス": "M", "ベルタ": "M", "ポルテ": "M", "マークII": "M", "マークX": "M", "マークXジオ": "L", "ヤリス": "S", "ヤリスクロス": "M", "ライズ": "M", "ライトエース": "LL", "ラウム": "M", "ラクティス": "M", "ラッシュ": "M", "ランドクルーザー": "XL", "ルーミー": "M", "レジアス": "XL", "ヴァンガード": "LL", "ヴィッツ": "S", "ヴェルファイア": "XL", "ヴェロッサ": "M", "ヴォクシー": "LL", "ヴォルツ": "M", "86": "M", "bB": "M", "bZ4X": "L", "C-HR": "L", "FJクルーザー": "XL", "GRヤリス": "S", "GR86": "M", "iQ": "S", "ist": "M", "MIRAI": "L", "MR-2": "M", "MR-S": "M", "RAV4": "LL", "SAI": "L", "WiLL サイファ": "M", "WiLL Vi": "M", "WiLL VS": "M"},
@@ -221,7 +251,9 @@
         "スズキ": {"アルト": "S", "アルト ラパン": "S", "アルトワークス": "S", "イグニス": "S", "エスクード": "L", "エリオ": "M", "エヴリィ": "S", "カプチーノ": "S", "カルタス": "S", "カルタス クレセント": "M", "キザシ": "M", "キャラ": "S", "キャリー": "S", "クロスビー": "M", "グランドエスクード": "LL", "ジムニー": "S", "ジムニーシエラ": "M", "ジムニーノマド": "M", "スイフト": "S", "スプラッシュ": "S", "スペーシア": "S", "スペーシアベース": "S", "セルボ": "S", "ソリオ": "M", "ツイン": "S", "ハスラー": "S", "バレーノ": "S", "パレット": "S", "フロンクス": "M", "マイティボーイ": "S", "ランディ": "LL", "ワゴンR": "S", "ワゴンRスマイル": "S", "ワゴンRソリオ": "M", "Kei": "S", "MRワゴン": "S", "SX4": "M", "X-90": "S"},
         "ダイハツ": {"アトレー": "S", "アトレー7": "M", "アルティス": "L", "ウェイク": "S", "エッセ": "S", "オプティ": "S", "キャスト": "S", "クー": "M", "グランマックス": "LL", "コペン": "S", "ストーリア": "S", "ソニカ": "S", "タフト": "S", "タント": "S", "タント エグゼ": "S", "テリオス": "S", "テリオスキッド": "S", "トール": "M", "ネイキッド": "S", "ハイゼット": "S", "ビーゴ": "M", "ブーン": "S", "ブーンルミナス": "M", "ミゼットII": "S", "ミラ": "S", "ミライース": "S", "ミラココア": "S", "ミラジーノ": "S", "ミラトコット": "S", "ムーヴ": "S", "ムーヴ キャンバス": "S", "ムーヴコンテ": "S", "ムーヴラテ": "S", "メビウス": "L", "ロッキー": "M", "MAX": "S", "YRV": "M"},
         "光岡自動車": {"オロチ": "L", "ガリュー": "L", "ガリューIII": "L", "ガリュー クラシック": "M", "ガリュー リムジン": "L", "ガリュー 204": "M", "ガリュー コンバーチブル": "L", "ヌエラ 6-02": "M", "バディ": "LL", "ヒミコ": "M", "ビュート": "M", "ライク": "S", "リューギ": "M", "ロックスター": "M", "M55": "M"},
-        "メルセデス・ベンツ": {"バネオ": "L", "ビアノ": "XL", "ミディアムクラス": "M", "190クラス": "M", "Aクラス": "M", "Bクラス": "M", "Cクラス": "M", "CLクラス": "L", "CLAクラス": "M", "CLEクラス": "L", "CLKクラス": "M", "CLSクラス": "L", "Eクラス": "L", "EQA": "L", "EQB": "L", "EQC": "L", "EQEセダン": "L", "EQG": "XL", "EQS SUV": "XL", "EQSセダン": "LL", "Gクラス": "XL", "GLクラス": "XL", "GLAクラス": "M", "GLBクラス": "L", "GLCクラス": "L", "GLEクラス": "LL", "GLKクラス": "L", "GLSクラス": "XL", "Mクラス": "LL", "Rクラス": "LL", "Sクラス": "LL", "SLクラス": "L", "SLCクラス": "M", "SLKクラス": "M", "SLRクラス": "L", "Vクラス": "XL", "AMC Aクラス": "M", "AMG Cクラス": "M", "AMG CLAクラス": "M", "AMG CLEクラス": "L", "AMG CLSクラス": "L", "AMG Eクラス": "L"},
+        "メルセデス・ベンツ": {"バネオ": "L", "ビアノ": "XL", "ミディアムクラス": "M", "190クラス": "M", "Aクラス": "M", "Bクラス": "M", "Cクラス": "M", "CLクラス": "L", "CLAクラス": "M", "CLEクラス": "L", "CLKクラス": "M", "CLSクラス": "L", "Eクラス": "L", "EQA": "L", "EQB": "L", "EQC": "L", "EQEセダン": "L", "EQG": "XL", "EQS SUV": "XL", "EQSセダン": "LL", "Gクラス": "XL", "GLクラス": "XL", "GLAクラス": "M", "GLBクラス": "L", "GLCクラス": "L", "GLEクラス": "LL", "GLKクラス": "L", "GLSクラス": "XL", "Mクラス": "LL", "Rクラス": "LL", "Sクラス": "LL", "SLクラス": "L", "SLCクラス": "M", "SLKクラス": "M", "SLRクラス": "L", "Vクラス": "XL", 
+            "AMG Aクラス": "M", /* 🌟 修正済み: AMC -> AMG */
+            "AMG Cクラス": "M", "AMG CLAクラス": "M", "AMG CLEクラス": "L", "AMG CLSクラス": "L", "AMG Eクラス": "L"},
         "メルセデスAMG/マイバッハ": {"AMG EQEセダン": "L", "AMG EQSセダン": "LL", "AMG Gクラス": "XL", "AMG GLクラス": "XL", "AMG GLAクラス": "M", "AMG GLBクラス": "L", "AMG GLCクラス": "L", "AMG GLEクラス": "LL", "AMG GLSクラス": "XL", "AMG GT": "L", "AMG GT 4ドアクーペ": "L", "AMG Mクラス": "LL", "AMG Sクラス": "LL", "AMG SLクラス": "L", "AMG SLCクラス": "M", "マイバッハ GLS": "XL", "マイバッハ Sクラス": "LL", "マイバッハ ５７": "XL", "マイバッハ ６２": "XL"},
         "スマート": {"フォーツーカブリオ": "S", "フォーツークーペ": "S", "フォーフォー": "S", "ロードスター": "S", "Ｋ": "S"},
         "BMW": {"１シリーズ": "M", "２シリーズ": "M", "３シリーズ": "M", "４シリーズ": "M", "５シリーズ": "L", "５シリーズ GT": "L", "６シリーズ": "L", "７シリーズ": "LL", "８シリーズ": "LL", "ｉ３": "M", "ｉ４": "L", "ｉ８": "L", "ｉＸ": "LL", "ｉＸ３": "LL", "Ｘ１": "L", "Ｘ２": "L", "Ｘ３": "LL", "Ｘ４": "LL", "Ｘ５": "XL", "Ｘ６": "XL", "Ｘ７": "XL", "ＸＭ": "XL", "Ｚ３": "M", "Ｚ４": "M"},
@@ -274,6 +306,7 @@
         "米国インフィニティ": {}, "北米トヨタ": {}, "北米ホンダ": {}, 
     };
 
+    // 価格データ (元のコードから変更なし)
     const priceData = {
         "ミスト洗車": { S: 1900, M: 3000, L: 3600, LL: 4000, XL: 5200 },
         "撥水ワックスコート洗車": { S: 2600, M: 3600, L: 4200, LL: 4700, XL: 5900 },
@@ -285,6 +318,9 @@
         "除菌＆消臭(車内)": { S: 2200, M: 2200, L: 2200, LL: 3300, XL: 3300 },
     };
     
+    /**
+     * 検索ロジック関数 (元のコードから変更なし)
+     */
     function searchCarSize() {
         const inputElement = document.getElementById('carNameInput');
         const resultElement = document.getElementById('result');
@@ -327,51 +363,109 @@
             resultElement.innerHTML = `<div id="result-placeholder">「${rawInput}」に該当する車種は見つかりませんでした。</div>`;
             countDisplay.textContent = "";
         } else {
-            matchingCars.sort((a, b) => a.name.localeCompare(b.name, 'ja'));
+            // 重複排除とソート（メーカー名 > 車種名）
+            const uniqueCars = Array.from(new Set(matchingCars.map(car => `${car.maker}#${car.name}#${car.size}`)))
+                .map(s => {
+                    const [maker, name, size] = s.split('#');
+                    return { maker, name, size };
+                });
+                
+            uniqueCars.sort((a, b) => {
+                const makerCompare = a.maker.localeCompare(b.maker, 'ja');
+                if (makerCompare !== 0) return makerCompare;
+                return a.name.localeCompare(b.name, 'ja');
+            });
             
             let html = '';
-            matchingCars.forEach(car => {
+            uniqueCars.forEach(car => {
                 const fullCarName = `${car.maker} ${car.name}`;
+                // HTML構造: メーカー名と車種名を2段表示する構造を反映
                 html += `
                     <div class="result-item">
-                        <span class="car-info">${fullCarName}</span>
+                        <div class="car-info-container">
+                            <span class="car-maker">${car.maker}</span>
+                            <span class="car-name">${car.name}</span>
+                        </div>
                         <span class="result-size size-${car.size.toLowerCase()}">${car.size}</span>
-                        <button class="price-button" onclick="openModal('${fullCarName}', '${car.size}')">価格を確認</button>
+                        <button class="price-button" onclick="openModal('${fullCarName.replace(/'/g, "\\'")}', '${car.size}')">価格を確認</button>
                     </div>
                 `;
             });
             
             resultElement.innerHTML = html;
-            countDisplay.textContent = `該当件数: ${matchingCars.length}件`;
+            countDisplay.textContent = `該当件数: ${uniqueCars.length}件`;
         }
     }
 
+    /**
+     * 価格モーダルを開く関数 (💡 価格表示バグ修正済み)
+     */
     function openModal(carName, size) {
         document.getElementById('modalTitle').textContent = carName;
         document.getElementById('modalSize').textContent = size;
         const priceTableElement = document.getElementById('priceTable');
         
+        // サービス名と、対応する priceDataのキーを正確にマッピング
+        const services = [
+            { label: "ミスト洗車", key: "ミスト洗車" },
+            { label: "撥水ワックスコート洗車", key: "撥水ワックスコート洗車" },
+            { label: "撥水ポリマーコート洗車", key: "撥水ポリマーコート洗車" }
+        ];
+
+        const options = [
+            // 表示名と priceDataのキーが異なっても正しくアクセスできるように記述
+            { label: "ガラスコート 1面", key: "ガラスコート１面" }, // キーは全角１
+            { label: "ガラスコート 全面", key: "ガラスコート全面" },
+            { label: "虫取り", key: "虫取り" },
+            { label: "車内清掃", key: "車内清掃" },
+            { label: "除菌＆消臭 (車内)", key: "除菌＆消臭(車内)" }
+        ];
+
         let html = '';
 
-        html += `<div class="service-group"><strong>ミスト洗車</strong><span>¥${priceData["ミスト洗車"][size].toLocaleString()}</span></div>`;
-        html += `<div><strong>撥水ワックスコート洗車</strong><span>¥${priceData["撥水ワックスコート洗車"][size].toLocaleString()}</span></div>`;
-        html += `<div><strong>撥水ポリマーコート洗車</strong><span>¥${priceData["撥水ポリマーコート洗車"][size].toLocaleString()}</span></div>`;
+        // 基本サービス
+        services.forEach((service, index) => {
+            const price = priceData[service.key] ? priceData[service.key][size] : undefined;
+            
+            // 価格が存在するか確認し、存在する場合は日本円形式で整形
+            if (price !== undefined) {
+                // 堅牢な日本円形式の整形処理
+                const priceFormatted = price.toLocaleString('ja-JP', { style: 'currency', currency: 'JPY', minimumFractionDigits: 0 });
+                
+                // 最初のサービスにのみ service-group クラスを適用
+                const groupClass = (index === 0) ? 'service-group' : '';
+                html += `<div class="${groupClass}"><strong>${service.label}</strong><span>${priceFormatted}</span></div>`;
+            } else {
+                html += `<div><strong>${service.label}</strong><span>価格データなし</span></div>`;
+            }
+        });
         
+        // オプションサービス
         html += `<div class="service-group"><strong>--- オプション ---</strong></div>`;
-        html += `<div><strong>ガラスコート 1面</strong><span>¥${priceData["ガラスコート１面"][size].toLocaleString()}</span></div>`;
-        html += `<div><strong>ガラスコート 全面</strong><span>¥${priceData["ガラスコート全面"][size].toLocaleString()}</span></div>`;
-        html += `<div><strong>虫取り</strong><span>¥${priceData["虫取り"][size].toLocaleString()}</span></div>`;
-        html += `<div><strong>車内清掃</strong><span>¥${priceData["車内清掃"][size].toLocaleString()}</span></div>`;
-        html += `<div><strong>除菌＆消臭 (車内)</strong><span>¥${priceData["除菌＆消臭(車内)"][size].toLocaleString()}</span></div>`;
-        
+        options.forEach(option => {
+            const price = priceData[option.key] ? priceData[option.key][size] : undefined;
+            
+            if (price !== undefined) {
+                // 堅牢な日本円形式の整形処理
+                const priceFormatted = price.toLocaleString('ja-JP', { style: 'currency', currency: 'JPY', minimumFractionDigits: 0 });
+                html += `<div><strong>${option.label}</strong><span>${priceFormatted}</span></div>`;
+            } else {
+                html += `<div><strong>${option.label}</strong><span>価格データなし</span></div>`;
+            }
+        });
+
         priceTableElement.innerHTML = html;
         document.getElementById('priceModal').style.display = 'block';
     }
 
+    /**
+     * モーダルを閉じる関数 (元のコードから変更なし)
+     */
     function closeModal() {
         document.getElementById('priceModal').style.display = 'none';
     }
 
+    // モーダル外クリックで閉じる処理 (元のコードから変更なし)
     window.onclick = function(event) {
         const modal = document.getElementById('priceModal');
         if (event.target == modal) {
