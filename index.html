@@ -172,7 +172,7 @@
         }
         .modal-content h2 {
             color: #ffaa00;
-            text-align: center;
+            /* text-align: center; */
             border-bottom: 2px solid #ffcc00;
             padding-bottom: 10px;
             margin-top: 0;
@@ -345,7 +345,7 @@
      * 価格モーダルを開く関数 (💡 価格表示バグ修正済み)
      */
     function openModal(carName, size) {
-        document.getElementById('modalTitle').textContent = carName;
+        document.getElementById('modalTitle').innerHTML = `<span class="car-maker">${carName.replace(' ',"</span>")}`;
         document.getElementById('modalSize').textContent = size;
         const priceTableElement = document.getElementById('priceTable');
         
